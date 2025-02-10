@@ -29,6 +29,17 @@ def init_db():
     cursor.close()
     conn.close()
 
+@app.route('/')
+def index():
+    routes = {
+        'Get all users': '/users [GET]',
+        'Get user by id': '/users/<id> [GET]',
+        'Create user': '/users [POST]',
+        'Update user': '/users/<id> [PUT]',
+        'Delete user': '/users/<id> [DELETE]'
+    }
+    return jsonify(routes)
+
 @app.route('/users', methods=['GET'])
 def get_users():
     try:
